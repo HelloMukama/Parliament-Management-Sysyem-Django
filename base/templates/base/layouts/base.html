@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<title>
+    {% include 'base/site_name.html' %} - {% block title %}{% endblock %}
+</title>
+
+{%load static%}
+    <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 11]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    <!-- Meta -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Codedthemes" />
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'static/favicon_io/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'static/favicon_io/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'static/favicon_io/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'static/favicon_io/site.webmanifest' %}">
+
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="{% static 'static/favicon_io/favicon.ico' %}" type="image/x-icon">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="{% static 'static/assets/css/style.css' %}">
+    
+    <!-- Specific CSS goes HERE -->
+    {% block stylesheets %}{% endblock stylesheets %}    
+
+</head>
+<body class="">
+
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+    
+    {% include 'base/includes/sidebar.html' %}
+    
+    {% include 'base/includes/navigation.html' %}
+
+
+    {% block content %}
+    {% endblock content %}
+
+
+    {% comment %}
+        {% include 'base/includes/live_scripts.html' %}
+
+    {% endcomment %}
+
+
+    {% include 'base/includes/old_scripts.html' %}
+
+
+    <!-- Specific Page JS goes HERE  -->
+    {% block javascripts %}{% endblock javascripts %}
+
+</body>
+
+</html>

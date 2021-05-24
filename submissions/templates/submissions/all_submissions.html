@@ -1,0 +1,395 @@
+{% extends "base/layouts/base.html" %}
+
+{% block title %} All Submissions {% endblock %}
+
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% load bootstrap %}
+{% load widget_tweaks %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
+
+<!-- the line below will style our export buttons on our table. -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css">
+{% endblock stylesheets %}
+
+
+
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+
+<!--            HANDLING THE TABLE OF THE MP -->
+{% if request.user.profile.is_mp  %}
+
+<div class="py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+            <li class="breadcrumb-item"><a href=""><span class="fas fa-home"></span></a></li>
+            <li class="breadcrumb-item"><a href="{% url 'submissions:all_submissions' %}">Submissions</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="{% url 'submissions:all_submissions' %}">All</a>
+            </li>
+        </ol>
+    </nav>
+    <div class="d-flex justify-content-between w-100 flex-wrap">
+        <div class="mb-3 mb-lg-0">
+            <h5 class="mt-2 text-primary">Showing all your submissions</h5>
+        </div>{{request.user.profile__user.profile_type}}
+
+        <div class="text text-dark mr-lg-3">
+            <a href="{% url 'submissions:submission_create' %}">
+                <span class="fas fa-plus me-2"></span> New Submission
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="card border-light shadow-hover mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="myDataTableMpAll" class="display cell-border table border-info boardered rounded table-stripped" style="width:100%;">
+                <thead class="thead-light">
+                <tr>
+                    <!--                            col 1 -->
+                    <th class="th-sm text-primary">ID</th>
+                    <!--                            col 2 -->
+                    <th class="th-sm  text-primary">District</th>
+                    <!--                            col 3 -->
+                    <th class="th-sm  text-primary">Submission</th>
+                    <!--                            col 4 -->
+                    <th class="th-sm  text-primary">Category</th>
+                    <!--                            col 5 -->
+                    <th class="th-sm-12  text-primary">Date Submitted</th>
+
+                    {%comment%}
+                    <!--                            col 6 -->
+                    <th class="th-sm  text-primary">Details</th>
+                    {%endcomment%}
+                </tr>
+                </thead>
+                <!-- Item -->
+
+                <tbody>
+                    {% for item in all_submissions_list %}
+                    <tr>
+                        <!--                            col 1 -->
+                        <td class="" style="{% if item.submission_status == 'pending'%} background-color: red;{% elif item.submission_status == 'inprogress'%} background-color: yellow;{% elif item.submission_status == 'solved'%} background-color: seagreen; {%endif%}">SUB{{item.id}}</td>
+                        <!--                            col 2 -->
+                        <td class="bg-white">{{item.district}}</td>
+                        <!--                            col 3 -->
+                        <td id="" class="p-2"><a href="{{ item.get_absolute_url }}">{{item.submission|truncatechars:"35"}}</a></td>
+                        {#<td id="submissionCell" class="p-2"><a href="{{ item.get_absolute_url }}">{{item.submission|truncatechars:"35"}}</a></td>#}
+                        <!--                            col 4 -->
+                        <td class="bg-white">{{ item.submission_category }}</td>
+                        <!--                            col 5 -->
+                        <td class="bg-white">{{ item.timestamp|date:'d-M-Y' }}</td>
+
+                        {%comment%}
+                        <!--                            col 6 -->
+                        <td class="bg-white p-1">
+                            <a href='{{ item.get_absolute_url }}pdf/'>
+                                <small>
+                                    <button class="btn btn-outline-primary"><span class="fa fa-download"></span>
+                                        Report
+                                    </button>
+                                </small>
+                            </a>
+                        </td>
+                        {%endcomment%}
+
+                    </tr>   <!-- end table -->
+                    {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center bg-warning"><p><b>No submissions</b></p></td>
+                        </tr>
+                    {% endfor %} <!-- End of Items -->
+
+                </tbody>
+
+                <tfoot class="thead thead-light">
+                    <tr>
+                        <!--                            col 1 -->
+                        <th class="th-sm text-primary">ID</th>
+                        <!--                            col 2 -->
+                        <th class="th-sm  text-primary">District</th>
+                        <!--                            col 3 -->
+                        <th class="th-sm  text-primary">Submission</th>
+                        <!--                            col 4 -->
+                        <th class="th-sm  text-primary">Category</th>
+                        <!--                            col 5 -->
+                        <th class="th-sm-12  text-primary">Date Submitted</th>
+
+                        {%comment%}
+                        <!--                            col 6 -->
+                        <th class="th-sm  text-primary">Details</th>
+                        {%endcomment%}
+                    </tr>
+                </tfoot>
+
+            </table>
+        </div>
+
+
+        {%comment%}
+        <!-- lets first deactivate the coded pagination -->
+        
+        <!--            PAGINATION -->
+        <div class="pagination mt-4">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1"><button class="btn btn-outline-primary">&laquo; first</button></a>
+                    <a href="?page={{ page_obj.previous_page_number }}"><button class="btn btn-outline-primary">previous</button></a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}"><button class="btn btn-outline-primary">next</button></a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}"><button class="btn btn-outline-primary">last &raquo;</button></a>
+                {% endif %}
+            </span>
+        </div>
+        {%endcomment%}
+
+
+    </div>
+</div>
+{% endif %}   <!-- end mp -->
+
+
+
+<!--    HANDLING THE VIEW OF THE SPEAKER -->
+{% if request.user.profile.is_thespeaker  %}
+
+<div class="py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+            <li class="breadcrumb-item"><a href=""><span class="fas fa-home"></span></a></li>
+            <li class="breadcrumb-item"><a href="{% url 'submissions:thespeaker_all_submissions' %}">Submissions</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="{% url 'submissions:thespeaker_all_submissions' %}">All</a>
+            </li>
+        </ol>
+    </nav>
+    <div class="d-flex justify-content-between w-100 flex-wrap">
+        <div class="mb-1 mb-lg-0">
+            <h4 class="mt-1 text-primary">The general list of all submissions from your MPs</h4>
+        </div>
+    </div>
+</div>
+
+<!-- SEARCH form -->
+{% include 'submissions/advanced_filters_form.html' %}
+<!-- End search form --> 
+
+
+<div class="card border-light shadow-hover mb-4" style="column-width: auto|length|initial|inherit;">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="myDataTableSpeakerAll" class="cell-border table border-info boardered rounded table-hover" style="width:100%;">
+                <thead class="thead-light">
+                <tr>
+                    <!--                            col 1 -->
+                    <th class="th-sm text-primary">ID</th>
+                    <!--                            col 2 -->
+                    <th class="th-sm  text-primary">District-Region</th>
+                    <!--                            col 3 -->
+                    <th class="th-sm  text-primary" style="column-width: 300px">Submission</th>
+                    <!--                            col 11 -->
+                    <th class="th-sm  text-primary">Submitted by</th>
+                    <!--                            col 4 -->
+                    <th class="th-sm  text-primary">Category</th>
+                    <!--                            col 5 -->
+                    <th class="th-sm  text-primary">Date Submitted</th>
+
+                    {%comment%}
+                    <!--                            col 6 -->
+                    <th class="th-sm  text-primary">Details</th>
+                    {%endcomment%}
+                </tr>
+                </thead>
+                <!-- Item -->
+                <tbody>
+                    {% for item in thespeaker_all_submissions_list %}
+                        <tr>
+                            <!--                            col 1 -->
+                            <td class="" style="{% if item.submission_status == 'pending'%} background-color: red;{% elif item.submission_status == 'inprogress'%} background-color: yellow;{% elif item.submission_status == 'solved'%} background-color: seagreen; {%endif%}">SUB{{item.id}}</td>
+                            <!--                            col 2 -->
+                            <td class="bg-white">{{item.district}} - <span class="text-success">{{item.region}}</span></td>
+                            <!--                            col 3 -->
+                            <td class=""><a href="{{ item.get_absolute_url }}">{{item.submission}}</a></td>
+                            {#<td id="submissionCell" class=""><a href="{{ item.get_absolute_url }}">{{item.submission}}</a></td>#}
+                            <!--                            col 11 -->
+                            <th class="bg-white"><a href="{% url 'profiles:show_self_details' item.profile.slug %}">{{item.profile}}</a></th>
+                            <!--                            col 4 -->
+                            <td class="bg-white">{{ item.submission_category }}</td>
+                            <!--                            col 5 -->
+                            <td class="bg-white">{{ item.timestamp|date:'d-M-Y' }}</td>
+
+
+                            {%comment%}
+                            <!--                            col 6 -->
+                            <td class="bg-white p-1">
+                                <a href='{{ item.get_absolute_url }}pdf/'>
+                                    <small>
+                                        <button class="btn btn-outline-primary"><span class="fa fa-download"></span>
+                                            Report
+                                        </button>
+                                    </small>
+                                </a>
+                            </td>
+                            {%endcomment%}
+
+                        </tr>   <!-- end table -->
+                    {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center bg-warning"><p><b>No submissions</b></p></td>
+                        </tr>
+                    {% endfor %} <!-- End of Items -->
+                </tbody>
+
+                <tfoot class="thead thead-light">
+                    <tr>
+                        <!--                            col 1 -->
+                        <th class="th-sm text-primary">ID</th>
+                        <!--                            col 2 -->
+                        <th class="th-sm  text-primary">District</th>
+                        <!--                            col 3 -->
+                        <th class="th-sm  text-primary">Submission</th>
+                        <!--                            col 11 -->
+                        <th class="th-sm  text-primary">Submitted by</th>
+                        <!--                            col 4 -->
+                        <th class="th-sm  text-primary">Category</th>
+                        <!--                            col 5 -->
+                        <th class="th-sm-12  text-primary">Date Submitted</th>
+                        {%comment%}
+                        <!--                            col 6 -->
+                        <th class="th-sm  text-primary">Details</th>
+                        {%endcomment%}
+                    </tr>
+                </tfoot>
+
+            </table>
+
+
+            {%comment%}
+            {% if my_filter != empty %}
+
+            <div class="row">
+                <div class="col-md-4 offset-2 mt-2">
+                    <a href="{% url 'stats:create_pdf_report_main_table' %}">View / Save results for printing</a>
+                </div>
+            </div>
+            {% endif %}
+
+            {%endcomment%}
+
+
+        </div>
+
+
+        {%comment%}
+        <!-- lets first deactivate the coded pagination -->
+
+        <div class="pagination mt-4">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1"><button class="btn btn-outline-primary">&laquo; first</button></a>
+                    <a href="?page={{ page_obj.previous_page_number }}"><button class="btn btn-outline-primary">previous</button></a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}"><button class="btn btn-outline-primary">next</button></a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}"><button class="btn btn-outline-primary">last &raquo;</button></a>
+                {% endif %}
+            </span>
+        </div>
+        {%endcomment%}
+
+
+    </div>
+</div>
+
+{% endif %}  <!-- end speaker -->
+
+</div>
+</div>
+
+{% endblock %}
+
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<!-- the lines below create the tables. -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+<!-- the lines below create the exporting features -->
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+
+
+
+<script>
+    $(document).ready(function() {
+        $('#myDataTableMpAll').DataTable();
+    } );
+
+
+    $(document).ready(function() {
+        $('#myDataTableSpeakerAll').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                // 'copy', 'csv', 'excel', 'pdf', 'print'
+                'pdf', 'print'
+            ]
+        });
+    } );
+
+
+function myFunction() {
+    var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+    }
+
+    var elem = document.getElementById("myButton1");
+        if (elem.value=="Hide Filters") elem.value = "Show Filters";
+    else elem.value = "Hide Filters";
+
+
+    var btn = document.getElementById("myButton1");
+    if(btn.innerText=="Show Advanced Filters"){
+       btn.innerText="Hide Advanced Filters";
+      }
+    else{
+      btn.innerText="Show Advanced Filters";
+      }
+};
+
+</script>
+
+{% endblock javascripts %}

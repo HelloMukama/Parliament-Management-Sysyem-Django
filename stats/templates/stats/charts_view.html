@@ -1,0 +1,203 @@
+{% extends "base/layouts/base.html" %}
+
+{% block title %} Charts & Graphs {% endblock %}
+
+{% load static %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block styslesheets %}
+<!-- Volt CSS -->
+<link type="text/css" href="{% static 'static/assets/css/charts_custom.css' %}" rel="stylesheet">
+{% endblock styslesheets %}
+
+
+{% block content %}
+<!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+
+
+<!-- MP -->
+{% if request.user.profile.is_mp %}
+
+
+<div class="row ml-2 col-10">
+    <div class="ml-0 col-12 mb-4">
+        <div class="row">
+
+            <!-- chart 1 -->
+            <div class="col-md-12 mb-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Column Graph</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                    {% include 'stats/mp_regional_totals_column_chart.html' %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- chart 2 -->
+            <div class="col-md-12 mb-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Pie Chart</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            {% include 'stats/mp_dash_pie_chart.html' %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- chart 3 -->
+            <div class="col-md-12 mb-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Line Graph</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            {% include 'stats/mp_dash_line_graph1.html' %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- chart 4 -->
+            <div class="col-md-12 mb-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Bar Graph</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            {% include 'stats/mp_dash_funnel3d_chart.html' %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+</div>
+{% endif %}   <!-- end MP -->
+
+
+<!-- the SPEAKER -->
+{% if request.user.profile.is_thespeaker %}
+
+<div class="row ml-2 col-10">
+    <div class="ml-0 col-12 mb-4">
+        <div class="row">
+
+            <!-- chart 0 -->
+            <div class="col-md-12 mb-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Column Graph</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            {% include 'stats/thespeaker_regional_totals_column_chart.html' %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- chart 1 -->
+            <div class="col-md-12 mb-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Column Graph</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            {% include 'stats/thespeaker_regions_cats_totals.html' %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- chart 2 -->
+            <div class="col-md-12 mb-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Pie Chart</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            {% include 'stats/thespeaker_dash_pie_chart.html' %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- chart 3 -->
+            <div class="col-md-12 mb-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Line Graph</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            {% include 'stats/thespeaker_dash_line_graph1.html' %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- chart 4 -->
+            <div class="col-md-12 mb-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Bar Graph</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            {% include 'stats/thespeaker_dash_funnel3d_chart.html' %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+</div>
+
+{% endif %}   <!-- end SPEAKER -->
+
+
+</div>
+</div>
+
+
+{% endblock %}
+
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+
+<!-- HighCharts libraries -->
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
+<script src="http://code.highcharts.com/modules/export-data.js"></script>
+<script src="http://code.highcharts.com/modules/series-label.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>
+{% endblock javascripts %}
+

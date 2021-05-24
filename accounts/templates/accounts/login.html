@@ -1,0 +1,87 @@
+{% extends "base/layouts/base-fullscreen.html" %}
+
+{% block title %} Login {% endblock title %}
+
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+
+{% block content %}
+
+    <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+        <div class="row w-100">
+            <div class="col-lg-4 mx-auto">
+
+
+                <span class="sidebar-text" id="siteName">
+                    <h2 id="leadHead" class="navbar-nav align-items-center">
+                      {% include 'base/site_name.html' %}
+                    </h2>
+                </span>
+
+                <div class="auto-form-wrapper">
+
+                    <center>
+        
+                        {% if msg %}
+                            <span class="text-danger">{{ msg | safe }}</span>
+                        {% else %}
+                            Login below.
+                        {% endif %}
+                        
+                    </center>                
+
+                <br />   
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{form|crispy}}
+
+                
+                    <div class="form-group">
+                    <button type="submit" name="login" class="btn btn-primary submit-btn btn-block">
+                    Login</button>
+                    </div>
+
+
+                    <div class="form-group d-flex justify-content-between">
+                        <div class="form-check form-check-flat mt-0">
+                            <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" checked> Keep me signed in </label>
+                        </div>
+                        <a href="{% url 'accounts:password_reset' %}">
+                            <span id="blueLink1" style="font-size: small;">Forgot Password?</span>
+                        </a>
+                    </div>
+
+        
+                </form>
+                </div>
+                {%comment%}
+                <ul class="auth-footer">
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" 
+                           href="#">AAAAAAA</a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" 
+                           href="#">BBBBBBB</a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" 
+                        href="#">CCCCCCC</a>
+                    </li>
+                </ul>
+                {%endcomment%}
+                <br>
+                <p class="footer-text text-center">&copy; <a class="text-white" href="#">Tanya Innovations</a></a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

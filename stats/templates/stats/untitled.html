@@ -1,0 +1,49 @@
+<!--Thi is the original code of the chart in statistics/charts..
+that was showing slices instead of real stuff -->
+
+
+{% extends "base/layouts/base.html" %}
+
+{% block title %} Settings | Password Change {% endblock %}
+
+{% load static %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row" id="container">
+    <div class="col-8 col-xl-8 ml-3">
+
+        <div class="card card-body shadow-sm mb-4 mb-lg-0">
+
+            <script>
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Graphical representation of your submissions from the different categories'
+                    },
+                    xAxis: {
+                        categories: [
+                            "Agriculture", "Education", "Health", "Industry", "Security", "Technology", "Tourism", "Others"]
+                    },
+                    series: [{
+                        name: 'Total Categorical Submissions',
+                        data: [
+                            22,55,888,99,66,55,57,109
+                        ]
+                    },
+                    ]});
+            </script>
+
+        </div>
+    </div>
+</div>
+
+<!-- Chart . js -->
+<script src="{% static 'chart/dist/Chart.min.js' %}"></script>
+
+{% endblock %}

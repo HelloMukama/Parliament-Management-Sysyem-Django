@@ -1,0 +1,360 @@
+<div class="row">
+    <div class="col-md-12 p-1">
+        <div class="card border-light shadow-sm">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h5 class="text">
+                            General number of submissions based off of Regions & Categories
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                    <table id="myDataTableSpeakerGenTable" class="display cell-border table border-info boardered rounded table-hover cellspacing='0'" style='width:100%;'>
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col" style="padding: 5px">Category</th>
+                            <th scope="col" style="padding: 5px">Northern</th>
+                            <th scope="col" style="padding: 5px">Eastern</th>
+                            <th scope="col" style="padding: 5px">Central</th>
+                            <th scope="col" style="padding: 5px">Southern</th>
+                            <th scope="col" style="padding: 5px">Western</th>
+                            <th scope="col" style="padding: 5px">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 1 -->
+                        <tr>
+                            <th scope="row">
+                                Agriculture
+                            </th>
+                            <td>{% if agric_north > 0 %}
+                                {{ agric_north }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if agric_east > 0 %}
+                                {{ agric_east }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if agric_central > 0 %}
+                                {{ agric_central }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if agric_south > 0 %}
+                                {{ agric_south }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if agric_west > 0 %}
+                                {{ agric_west }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td class="text text-primary h4">{{ agric_total }}</td>
+                        </tr>
+
+                        <!-- 2 -->
+                        <tr>
+                            <th scope="row">
+                                Education
+                            </th>
+                            <td>
+                                {% if educ_north > 0 %}
+                                {{ educ_north }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if educ_east > 0 %}
+                                {{ educ_east }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if educ_central > 0 %}
+                                {{ educ_central }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if educ_south > 0 %}
+                                {{ educ_south }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if educ_west > 0 %}
+                                {{ educ_west }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td class="text text-primary h4">{{ educ_total }}</td>
+                        </tr>
+
+                        <!-- 3 -->
+                        <tr>
+                            <th scope="row">
+                                Health
+                            </th>
+                            <td>
+                                {% if health_north > 0 %}
+                                {{ health_north }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if health_east > 0 %}
+                                {{ health_east }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if health_central > 0 %}
+                                {{ health_central }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if health_south > 0 %}
+                                {{ health_south }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if health_west > 0 %}
+                                {{ health_west }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td class="text text-primary h4">{{ health_total }}</td>
+                        </tr>
+
+                        <!-- 4 -->
+                        <tr>
+                            <th scope="row">
+                                Industry
+                            </th>
+                            <td>
+                                {% if ind_north > 0 %}
+                                {{ ind_north }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if ind_east > 0 %}
+                                {{ ind_east }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if ind_central > 0 %}
+                                {{ ind_central }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if ind_south > 0 %}
+                                {{ ind_south }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if ind_west > 0 %}
+                                {{ ind_west }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td class="text text-primary h4">{{ ind_total }}</td>
+                        </tr>
+
+                        <!-- 5 -->
+                        <tr>
+                            <th scope="row">
+                                Security
+                            </th>
+                            <td>
+                                {% if sec_north > 0 %}
+                                {{ sec_north }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if sec_east > 0 %}
+                                {{ sec_east }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if sec_central > 0 %}
+                                {{ sec_central }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if sec_south > 0 %}
+                                {{ sec_south }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if sec_west > 0 %}
+                                {{ sec_west }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td class="text text-primary h4">{{ sec_total }}</td>
+                        </tr>
+
+                        <!-- 6 -->
+                        <tr>
+                            <th scope="row">
+                                Technology
+                            </th>
+                            <td>
+                                {% if tech_north > 0 %}
+                                {{ tech_north }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if tech_east > 0 %}
+                                {{ tech_east }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if tech_central > 0 %}
+                                {{ tech_central }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if tech_south > 0 %}
+                                {{ tech_south }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if tech_west > 0 %}
+                                {{ tech_west }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td class="text text-primary h4">{{ tech_total }}</td>
+                        </tr>
+
+                        <!-- 7 -->
+                        <tr>
+                            <th scope="row">
+                                Tourism
+                            </th>
+                            <td>
+                                {% if tour_north > 0 %}
+                                {{ tour_north }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if tour_east > 0 %}
+                                {{ tour_east }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if tour_central > 0 %}
+                                {{ tour_central }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if tour_south > 0 %}
+                                {{ tour_south }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if tour_west > 0 %}
+                                {{ tour_west }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td class="text text-primary h4">{{ tour_total }}</td>
+                        </tr>
+
+                        <!-- 8 -->
+                        <tr>
+                            <th scope="row">
+                                Others
+                            </th>
+                            <td>
+                                {% if others_north > 0 %}
+                                {{ others_north }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if others_east > 0 %}
+                                {{ others_east }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if others_central > 0 %}
+                                {{ others_central }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if others_south > 0 %}
+                                {{ others_south }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if others_west > 0 %}
+                                {{ others_west }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td class="text text-primary h4">{{ others_total }}</td>
+                        </tr>
+
+                        <!-- 9 -->
+                        <tr class="text text-primary h4">
+                            <th scope="row">Total</th>
+                            <td>{{ north_total }}</td>
+                            <td>{{ east_total }}</td>
+                            <td>{{ central_total }}</td>
+                            <td>{{ south_total }}</td>
+                            <td>{{ west_total }}</td>
+                            <td>NULL</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                    {%comment%}
+
+                <div class="row">
+                    <div class="col-md-4 offset-2 mt-2">
+                        <a href="{% url 'stats:create_pdf_report_main_table' %}">View / Download table as pdf</a>
+                    </div>
+                    <div class="col-md-4 offset-1 mt-2">
+                        <h7>Cant see pdf?</h7>
+                        <a href="{% url 'stats:download_pdf_report_main_table' %}">Download instead</a>
+                    </div>
+                </div>
+                    {%endcomment%}
+
+            </div>
+        </div>
+    </div>

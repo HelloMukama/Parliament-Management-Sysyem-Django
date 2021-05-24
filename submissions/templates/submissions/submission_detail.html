@@ -1,0 +1,131 @@
+{% extends "base/layouts/base.html" %}
+
+{% block title %} Submission | Details {% endblock %}
+{% load static %}
+{% load comment_tags %}  {# Loading the template tag #}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- [ Main Content ] start -->
+            <div class="row col-md-11">
+                <!-- [ sample-page ] start -->
+                <div class="col-sm-12">
+                    <div class="card container">
+
+                        <div class="card-body">
+                                <span style="font-size: small" class="text text-twitter">
+                                    <span class="fa fa-exclamation-circle"></span>
+                                    The information below is what will appear on the report you choose to generate
+                                </span>
+
+                                <h6 class="mb-2">
+                                    <span class="h4">
+                                    Details of this submission</span> <span>as of <span class="text-muted" style="font-size: : small;">{% now "jS F Y H:i" %}</span></span>
+                                    {% if request.user.profile.is_thespeaker %}
+                                    <span class="float-right" style="font-size: 120%;">
+                                        <a href="{% url 'submissions:submission_status_update' submission.pk %}">
+                                            <button class="btn btn-outline-primary">Change Status</button>
+                                        </a>
+                                    </span>
+                                    {% endif %}
+                                </h6>
+                            
+                            <div class="">                
+                                <p>Submitted by: <span class="text-primary">{{ submission.profile.user.first_name }} {{ submission.profile.user.last_name }}</span><span>, </span><span class="text-primary">{{ submission.profile.email }}</span></p>
+                            
+                                
+                                <p>Constituency: 
+                                    <span id="myDetails" class="text-primary"></span>{{ submission.profile.district }}, {{ submission.profile.my_constituency }} - {{ submission.profile.region_name }} Uganda
+                                </p>
+                            </div>
+
+                            <div class="mt-2">
+                                <p><b style="font-size: large;">Title:</b> <span class="text-uppercase">{{ submission.submission }}</span>
+                                    <span> {% if submission.submission_status == 'solved' %}<span class="d-inline-block" tabindex="0" title="Issues raised in this submission were resolved"><span class="badge badge-pill badge-success"><span class="fas fa-info-circle"></span> Solved</span></span>{% elif submission.submission_status == 'pending' %}<span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Issues raised in this submission are still under review by the speaker's office"><span class="badge badge-pill badge-danger"><span class="fas fa-info-circle"></span> Pending</span></span>{% elif submission.submission_status == 'inprogress' %}<span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Issues raised in this submission are being worked upon"><span class="badge badge-pill badge-warning"><span class="fas fa-info-circle"></span> In Progress</span></span>{% endif %}</span>
+                                </p>
+                            </div>
+
+                            <div class="mt-2">
+                                <h6 class="mb-2 h6"><b>Details</b></h6>
+                                <p>{{ submission.description|linebreaksbr }}</p>
+
+                                <span style="font-size: small;"><p>Submitted on <span style="font-size: small;" class="text-muted">{{ submission.timestamp }}</span> | Last edited on <span style="font-size: small;" class="text-muted">{{ submission.updated }}</span></p>
+                                </span>
+
+                                {% if request.user.profile.is_mp  %}
+                                    <span class="fa fa-pencil"></span>
+                                    <span><a href="{% url 'submissions:submission_update' submission.pk %}">
+                                        <span id="subEdit"> Edit Submission</span></a>
+                                    </span>
+                                {% endif %}
+                            </div>
+
+
+
+                            {% if request.user.profile.is_thespeaker %}
+                                <a href='{{ submission.get_absolute_url }}pdf/'>
+                                    <small>
+                                        <button class="btn btn-primary"><span class="fa fa-download"></span>
+                                            Download report
+                                        </button>
+                                    </small>
+                                </a>
+                            {%endif%}
+
+                            <div class="col-12">
+                                <h6>{% render_comments submission request %}</h6>
+
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- [ sample-page ] end -->
+            </div>
+            <!-- [ Main Content ] end -->
+        </div>
+    </div>
+    <!-- [ Main Content ] end -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+
+    <script>
+
+
+        $(document).ready(function(){
+            // this will fetch the rendered form on page load and put it in the modal body
+            $.ajax({
+                url: 'submissions:submission_status_update',
+                type: 'GET',
+                success: function(data) {
+                    $('#exampleModal .modal-body').html(data);
+                }
+            });
+
+
+
+        $('#exampleModal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget)
+            var recipient = button.data('whatever')
+            var modal = $(this)
+            modal.find('.modal-title').text('New message to ' + recipient)
+            modal.find('.modal-body input').val(recipient)
+        })
+
+
+    };
+    </script>
+
+{% endblock javascripts %}

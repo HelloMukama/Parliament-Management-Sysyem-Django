@@ -1,0 +1,35 @@
+{% extends "base/layouts/base.html" %}
+
+{% block title %} All Submissions {% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+
+<div class="row col-10 mt-4">
+    <div class="card col8">
+
+        <form method="GET">
+
+            {{ filter.form|crispy }}
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        {% for submission in filter.qs %}
+            <ul>
+                <li>{{submission}}</li>
+            </ul>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

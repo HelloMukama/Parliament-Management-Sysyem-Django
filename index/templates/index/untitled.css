@@ -1,0 +1,83 @@
+{% load staticfiles i18n %}
+{% load static %}
+
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900" rel="stylesheet" />
+
+<script>
+
+@page {
+    size: "A4";
+    margin: 2.5cm 1.5cm 3.5cm 1.5cm;
+    
+    @bottom-center {
+        background: url({% static 'static/assets/img/bg/coa-ug.png' %}) no-repeat center top;
+        background-size: auto 1.5cm;
+        padding-top: 1.8cm;
+        content: "{% trans " Donation made via www . make-impact . org " %}";
+        font: 10pt "Playfair Display";
+        text-align: center;
+        vertical-align: top;
+    }
+
+    @top-center {
+        content: "Documentation";
+    }
+
+    @bottom-right {
+        content: "Page " counter(page) " of " counter(pages); 
+    }
+}
+
+
+
+footer {
+    position: fixed;
+    bottom: -2.5cm;
+    width: 100%;
+    text-align: center;
+    font-size: 10pt;
+}
+
+
+</script>
+
+/*!* before *!*/
+/*#background {*/
+/*    position:absolute;*/
+/*    z-index:0;*/
+/*    background:white;*/
+/*    display:block;*/
+/*    min-height:50%; */
+/*    min-width:50%;*/
+/*    color:yellow;*/
+/*    background: url('/home/nmj/Downloads/parliament_head.jpg');*/
+/*}*/
+
+
+/*#body_content {*/
+/*    position: relative;*/
+/*    page-break-inside: auto;*/
+/*    top: 5pt;*/
+/*    padding-bottom: 30px;*/
+/*    height: 0px;*/
+/*    !*overflow: hidden;*!*/
+/*}*/
+
+
+/*#bg-text {*/
+/*    color:lightgrey;*/
+/*    font-size:100px;*/
+/*    margin-top: 500px;*/
+/*    margin-left: 90px;*/
+/*    margin-right: 40px;*/
+/*    transform:rotate(320deg);*/
+/*    -webkit-transform:rotate(300deg);*/
+/*    opacity: 95%;*/
+/*}*/
+
+
+
+
+/*.subtitle {*/
+/*    padding-bottom: 20px;*/
+/*}*/

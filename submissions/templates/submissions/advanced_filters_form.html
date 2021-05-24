@@ -1,0 +1,67 @@
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% load bootstrap %}
+{% load widget_tweaks %}
+
+    <div class="card col-12">
+
+        <button class="btn btn-primary col-md-4 m-1 bt-sm" onclick="myFunction()" id="myButton1" style="width: fit-content;">Show Advanced Filters</button>
+       
+        <div id="myDIV" style="display: none;">
+
+            <form method="GET">
+                <div class="well m-4">
+                    <h6 class="text-primary mb-3">
+                        Filter this table here. Enter/Select one or more fields & hit 'Show results'!
+                    </h6>
+                <div class="row mb-3">
+
+                <div class="form-group col-sm-4 col-md-3">
+                    {{ my_filter.form.region.label_tag }}
+                    {% render_field my_filter.form.region class="form-control" %}
+                </div>
+
+                <div class="form-group col-sm-4 col-md-3">
+                    {{ my_filter.form.district.label_tag }}
+                    {% render_field my_filter.form.district class="form-control" %}
+                </div>
+
+                <div class="form-group col-sm-4 col-md-3">
+                    {{ my_filter.form.submission.label_tag }}
+                    {% render_field my_filter.form.submission class="form-control" %}
+                </div>
+
+                <div class="form-group col-sm-4 col-md-3">
+                    {{ my_filter.form.submission_category.label_tag }}
+                    {% render_field my_filter.form.submission_category class="form-control" %}
+                </div>
+
+                <div class="form-group col-sm-4 col-md-3">
+                    {{ my_filter.form.submission_status.label_tag }}
+                    {% render_field my_filter.form.submission_status class="form-control" %}
+                </div>
+
+                <div class="form-group col-sm-4 col-md-3">
+                    {{ my_filter.form.start_date.label_tag }}
+                    {% render_field my_filter.form.start_date class="form-control" %}
+                </div>
+
+                <div class="form-group col-sm-4 col-md-3">
+                    {{ my_filter.form.end_date.label_tag }}
+                    {% render_field my_filter.form.end_date class="form-control" %}
+                </div>
+
+                <div class="form-group col-sm-4 col-md-3">
+                    <button type="submit" class="btn btn-success btn-lg btn-block m-3">
+                        <span class="fa fa-search"></span>
+                        Show results
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+    
+</div>
+</div>

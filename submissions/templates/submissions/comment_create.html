@@ -1,0 +1,52 @@
+{% extends "base/layouts/base.html" %}
+
+{% block title %} Submission | Details {% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row ml-3 pl-lg-4">
+    <div class="col-12 col-xl-12 ml-3">
+        <div class="card card-body shadow-sm mb-4">
+            <h6 class="mb-4">Add your comment below:</h6>{{comments}}
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form | crispy }}
+                <button type="submit" class="mt-3 btn btn-outline-dark">Save comment</button>
+            </form>
+            <br><br>
+            <h6 class="mb-4">Comments on this submission:</h6>
+
+            {% for comment in comments %}
+                <p>{{ comment.body }} | {{ comment.profile | linebreaks }}</p>
+
+                {% for reply in comment.replies.all %}
+                    <p>{{ reply.body }} | {{ reply.profile | linebreaks }}</p>
+
+                {% endfor %}
+            <p>Reply</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form | crispy }}
+                <input type="hidden" name="reply_pk" value="{{ comment.id }}"/>
+                <button type="submit" class="mt-3 btn btn-outline-dark">Save reply</button>
+            </form>
+
+            {% empty %}
+            <p>No comments yet</p>
+
+            {% endfor %}
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+{% endblock %}

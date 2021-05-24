@@ -1,0 +1,208 @@
+{% extends "base/layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+{% load static %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<!-- Volt CSS -->
+<link type="text/css" href="{% static 'static/assets/css/charts_custom.css' %}" rel="stylesheet">
+{% endblock stylesheets %}
+
+
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+
+<!-- MP -->
+{% if request.user.profile.is_mp %}
+
+
+{% include 'stats/mp_submission_basic_stats.html' %}
+
+<div class="row">
+    <div class="ml-0 col-12 mb-4">
+        <div class="row">
+                <!-- chart 1 -->
+                <div class="col-md-6 mb-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Column Chart</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                {% include 'stats/mp_regional_totals_column_chart.html' %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- chart 2 -->
+                <div class="col-md-6 mb-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Pie Chart</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                {% include 'stats/mp_dash_pie_chart.html' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- chart 4 -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Bar Graph</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                {% include 'stats/mp_dash_funnel3d_chart.html' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- chart 5 -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Line Graph</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                {% include 'stats/mp_dash_line_graph1.html' %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p><a href="{% url 'stats:charts_view' %}">View More Charts</a></p>
+            </div>
+
+    </div>
+</div>
+
+
+
+{% endif %}   <!-- end MP -->
+
+
+
+
+<!-- the SPEAKER -->
+{% if request.user.profile.is_thespeaker %}
+
+
+{% include 'stats/thespeaker_submission_basic_stats.html' %}
+
+
+<div class="row">
+    <div class="ml-0 col-11 mb-4">
+        <div class="row">
+                <!-- chart 1 -->
+                <div class="col-md-6 mb-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Column Chart</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                {% include 'stats/thespeaker_regional_totals_column_chart.html' %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- chart 2 -->
+                <div class="col-md-6 mb-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Pie Chart</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                {% include 'stats/thespeaker_dash_pie_chart.html' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            <!-- chart 3 -->
+            <div class="col-md-12 mb-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Column Graph</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            {% include 'stats/thespeaker_regions_cats_totals.html' %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                <!-- chart 4 -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Bar Graph</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                {% include 'stats/thespeaker_dash_funnel3d_chart.html' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- chart 5 -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Line Graph</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                {% include 'stats/thespeaker_dash_line_graph1.html' %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p><a href="{% url 'stats:charts_view' %}">View More Charts</a></p>
+
+            </div>
+
+    </div>
+</div>
+
+{% endif %}   <!-- end SPEAKER -->
+
+</div>
+</div>
+
+
+{% endblock %}
+
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
+

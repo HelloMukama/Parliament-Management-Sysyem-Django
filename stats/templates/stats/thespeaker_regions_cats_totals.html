@@ -1,0 +1,64 @@
+
+<div id="container222x" class="container-fluid"></div>
+
+
+<script>
+
+    Highcharts.chart('container222x', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'The variation of submissions from different categories and regions'
+    },
+    xAxis: {
+        categories:{{thespeaker_categories|safe}},
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'The number of submissions'
+        }
+    },
+    
+    plotOptions: {
+        column: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    
+    series: [{
+        name: 'Northern',
+        data: {{n_total_values_thespeaker|safe}}
+
+    }, {
+        name: 'Eastern',
+        data: {{e_total_values_thespeaker|safe}}
+
+    }, {
+        name: 'Central',
+        data: {{c_total_values_thespeaker|safe}}
+
+    }, {
+        name: 'Southern',
+        data: {{s_total_values_thespeaker|safe}}
+
+    }, {
+        name: 'Western',
+        data: {{w_total_values_thespeaker|safe}}
+    }]
+});
+
+
+</script>
+
+<!-- HighCharts libraries -->
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
+<script src="http://code.highcharts.com/modules/export-data.js"></script>
+<script src="http://code.highcharts.com/modules/series-label.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>

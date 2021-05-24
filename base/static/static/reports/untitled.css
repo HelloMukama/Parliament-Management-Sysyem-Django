@@ -1,0 +1,68 @@
+
+@page {
+        size: A4 portrait; /* can use also 'landscape' for orientation */
+        margin: 1cm;
+        padding: 15;
+        margin-top: 2cm;
+        margin-bottom: 5cm;
+        margin-left: 5;
+        margin-right: 5;
+
+        @top-left{
+            content: element(header);
+        }
+
+        @top-right{
+            content: element(.subitle);
+        }
+
+        @bottom-center{
+            content: element(footer);
+        }
+
+        @top-center {
+            height: 45px;
+            white-space: pre;
+            text-align: left;
+            padding-left: 50px;
+            content: url('/home/nmj/Downloads/parliament_head.jpg');
+            background: url('/home/nmj/Downloads/parliament_head.jpg');
+            background-size: 100%;
+            width: 100%;
+        }
+
+
+
+}
+
+/*header, footer, .body_content{*/
+   /*font-size: 12px;*/
+   /* color: #000; */
+   /*font-family: Arial;*/
+   /*width: 100%;*/
+   /*position: relative;*/
+/*}*/
+
+
+header {
+    /*position: fixed;*/
+    position: running(header); 
+    /*display: block; */
+}
+
+footer {
+    position: fixed;
+    /*position: running(footer);*/
+    /*position: absolute;*/
+    bottom: 0;
+    /*display: block;*/
+}
+
+.body_content {
+    position: relative;
+    page-break-inside: auto;
+    top: 50pt;
+    padding-bottom: 30px;
+    height: 50px;
+    /*overflow: hidden;*/
+}

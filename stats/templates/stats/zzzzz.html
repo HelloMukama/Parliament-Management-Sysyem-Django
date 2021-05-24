@@ -1,0 +1,82 @@
+<div id="container3D" class="container-fluid"></div>
+
+<script>
+       
+    // Set up the chart
+    Highcharts.chart('container3D', {
+        chart: {
+            type: 'funnel3d',
+            options3d: {
+                enabled: true,
+                alpha: 10,
+                depth: 50,
+                viewDistance: 50
+            }
+        },
+        title: {
+            text: 'Highcharts Funnel3D Chart'
+        },
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b> ({point.y:,.0f})',
+                    allowOverlap: true,
+                    y: 10
+                },
+                neckWidth: '30%',
+                neckHeight: '25%',
+                width: '80%',
+                height: '80%'
+            }
+        },
+        series: [{
+            name: 'Categories',
+            data: [{
+                name: 'Agriculture',
+                y: {{funnel_total_agriculture|safe}},
+            }, {
+                name: 'Education',
+                y: {{funnel_total_education|safe}}
+            }, {
+                name: 'Health',
+                y: {{funnel_total_health|safe}}
+            }, {
+                name: 'Industry',
+                y: {{funnel_total_industry|safe}}
+            }, {
+                name: 'Security',
+                y: {{funnel_total_security|safe}}
+            }, {
+                name: 'Technology',
+                y: {{funnel_total_technology|safe}}
+            }, {
+                name: 'Tourism',
+                y: {{funnel_total_tourism|safe}}
+            }, {
+                name: 'Others',
+                y: {{funnel_total_others|safe}}
+            }]
+        }]
+    });
+
+
+</script>
+{% load static %}
+
+<!-- HighCharts libraries -->
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
+<script src="http://code.highcharts.com/modules/export-data.js"></script>
+<script src="http://code.highcharts.com/modules/series-label.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>
+
+<!-- 3d -->
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/cylinder.js"></script>
+<script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+

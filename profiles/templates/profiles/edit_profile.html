@@ -1,0 +1,80 @@
+{% extends "base/layouts/base.html" %}
+
+{% block title %} Edit Profile {% endblock %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+
+
+        <!-- [ Main Content ] start -->
+        <div class="row">
+
+            <div class="col-md-6 col-lg-5">
+
+                <div class="card card-body shadow-sm mb-4">
+                <h5>Edit your profile information here</h5>
+                
+                    {%comment%}
+                    {%endcomment%}
+                    {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                        <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+                            <a class="close" data-dismiss="alert" href="#">&times;</a>
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ profile_edit_form | crispy }}
+                        <button class="mt-2 btn btn-primary">Save edits</button>
+                    </form>
+                </div>
+                </div>
+
+                    <div class="col-md-3 mt-3">
+                        <div class="card card-profile">
+                            <div class="card-avatar">
+                                <span class="">
+                                    <img class="img-rounded" src="{{ user.profile.image_url|default_if_none:'#' }}" height="50%" width="50%"/>
+                                </span>
+                            </div>
+                            <div class="card-body mb-0">
+                                <h6 class="card-category text-gray">@{{ user.username }}</h6>
+                                <h6 class="card-title">{{ user.profile.email }}</h6>
+                                <p class="card-description"><em>{{user.profile.bio|linebreaksbr}}</em></p>
+                                {%comment%}
+                                {% if user.profile.is_thespeaker %}
+                                {%if not request.get_full_path == user.profile.get_absolute_url %}
+                                <a href="#hellomukama" class="btn btn-outline-dark btn-round">Add to my broadcast</a>
+                                {% endif %}
+                                {%endif%}
+                                {%endcomment%}
+                            </div>
+                        </div>
+                    </div>
+            
+        </div> <!-- [ Main Content ] end -->
+
+    </div>
+</div>
+<!-- [ Main Content ] end -->
+
+
+
+{% endblock %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock %}

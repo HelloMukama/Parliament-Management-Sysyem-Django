@@ -1,0 +1,82 @@
+
+
+
+<figure class="highcharts-figure">
+
+<div id="container2" class="container-fluid"></div>
+</figure>
+
+<script>
+
+    Highcharts.chart('container2', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'All submission totals based on Regions and Categories'
+        },
+        xAxis: {
+            categories: {{categories|safe}},
+            title: {
+                text: 'Submission Categories'
+            },
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Number of Submissions'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Northern',
+            data: {{n_total_values|safe}}
+
+        }, {
+            name: 'Eastern',
+            data: {{e_total_values|safe}}
+
+        }, {
+            name: 'Central',
+            data: {{c_total_values|safe}}
+
+        }, {
+            name: 'Southern',
+            data: {{s_total_values|safe}}
+
+        }, {
+            name: 'Western',
+            data: {{w_total_values|safe}}
+
+        }]
+    }); 
+
+
+</script>
+
+
+
+
+
+
+<!-- Chartjs libraries -->
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
+<script src="http://code.highcharts.com/modules/export-data.js"></script>
+<script src="http://code.highcharts.com/modules/series-label.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>

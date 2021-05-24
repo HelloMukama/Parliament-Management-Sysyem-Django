@@ -1,0 +1,51 @@
+<!--Appearing in statistics >> charts / graphs-->
+
+{% extends "base/layouts/base.html" %}
+
+{% block title %} Settings | Password Change {% endblock %}
+
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+<script>
+
+    var endpoint = 'api/chart/data'
+    var defaultData = []
+    var labels = []
+
+    $.ajax({
+        method: "GET",
+        url: endpoint,
+        success: function (data) {  // 'data' here is the response
+            labels = data.labels
+            defaultData = data.default
+
+            var ctx = document.getElementById("myChart")
+            var myChart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "# of votes",
+                        data: defaultData,
+                    }]
+                }
+            })
+        },
+        error: function (error_data){
+            console.log("error")
+            console.log(error_data)
+        }
+    })
+
+
+</script>
+
+{% block content %}
+
+{% endblock %}
+
+<!-- Specific Page JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}
+<!-- this is apperaring in statistics >> charts/graphs -->

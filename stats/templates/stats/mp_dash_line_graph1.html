@@ -1,0 +1,50 @@
+<div id="container22222line" className="container-fluid"></div>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var chart = Highcharts.chart('container22222line', {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Submissions you have made in each category'
+            },
+            xAxis: {
+                categories: {{mp_bar_categories|safe}},
+        title: {
+            text: 'Submission Categories'
+        }
+    ,
+    },
+        yAxis: {
+            title: {
+                text: 'Number of submissions'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        series: [{
+            name: 'Totals',
+            data: {{mp_bar_values|safe}}
+    }]
+    })
+        ;
+    });
+
+
+</script>
+
+
+<!-- HighCharts libraries -->
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
+<script src="http://code.highcharts.com/modules/export-data.js"></script>
+<script src="http://code.highcharts.com/modules/series-label.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>

@@ -1,0 +1,57 @@
+
+
+
+<div id="container2222" class="container-fluid"></div>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+        var chart = Highcharts.chart('container2222', {
+            chart: {
+                type: 'column',
+            }, 
+            title: {
+                text: 'Categories VS the number of your submissions.'
+            }, 
+
+            xAxis: {
+                categories:  {{mp_bar_categories|safe}},
+            title: {
+                text: 'Submission Categories'
+            },
+
+
+            }, 
+            yAxis: {
+                title: {
+                    text: 'Number of submissions'
+                }
+            },
+            plotOptions: {
+                column: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            series: [{
+                colorByPoint: true,
+                name: 'Totals',
+                data: {{mp_bar_values|safe}}
+            }]
+        });
+    });
+
+
+</script>
+
+
+
+
+<!-- Chartjs libraries -->
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
+<script src="http://code.highcharts.com/modules/export-data.js"></script>
+<script src="http://code.highcharts.com/modules/series-label.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>

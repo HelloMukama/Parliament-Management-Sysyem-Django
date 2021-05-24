@@ -1,0 +1,39 @@
+{% load static %}
+
+<div class="row">
+    <!-- order-card start -->
+<div class="col-md-6 col-xl-3">
+    <div class="card bg-c-blue order-card">
+        <div class="card-body">
+            <h6 class="text-white">Total Submissions</h6>
+            <h2 class="text-right text-white"><i class="fa fa-calculator float-left" aria-hidden="true"></i><span>{{ total_subs_thespeaker }}</span></h2>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-xl-3">
+    <div class="card bg-c-green order-card">
+        <div class="card-body">
+            <h6 class="text-white">Fully Resolved</h6>
+            <h2 class="text-right text-white"><i class="fa fa-check-circle float-left"></i><span>{{ solved_thespeaker }}</span></h2>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-xl-3">
+    <div class="card bg-c-yellow order-card">
+        <div class="card-body">
+            <h6 class="text-white">Active on the Floor</h6>
+            <h2 class="text-right text-white"><i class="fas fa-spinner float-left"></i><span>{{ inprogress_thespeaker }}</span></h2>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-xl-3">
+    <div class="card bg-c-red order-card">
+        <div class="card-body">
+            <h6 class="text-white">Pending Review</h6>
+            <h2 class="text-right text-white"><i class="fas fa-hourglass float-left"></i><span>{{ pending_thespeaker }}</span></h2>
+        </div>
+    </div>
+</div>
+<!-- order-card end 
+</div>
+    

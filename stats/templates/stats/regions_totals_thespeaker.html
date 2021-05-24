@@ -1,0 +1,44 @@
+
+
+
+{{arr_regions_thespeaker}}<br>
+{{arr_region_totals_thespeaker}}
+
+
+
+
+<div id="container111" class="container-fluid"></div>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+        var chart = Highcharts.chart('container111', {
+            chart: {
+                type: 'bar'
+            }, 
+            title: {
+                text: 'SUBMISSION CATEGORIES vs THE NUMBER OF YOUR SUBMISSIONS MADE IN EACH OF THEM'
+            }, 
+            xAxis: {
+                categories:  {{arr_region_totals_thespeaker|safe}},
+            title: {
+                text: 'Categories'
+            },
+            }, 
+            yAxis: {
+                title: {
+                    text: 'Number of submissions'
+                }
+            },
+            series: [{
+                name: 'Totals',
+                data: {{arr_regions_thespeaker|safe}}
+            }]
+        });
+    });
+
+
+</script>
+
+
+

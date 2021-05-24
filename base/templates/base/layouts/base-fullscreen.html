@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    {% load static %}
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="{% static 'static/favicon_io/site.webmanifest' %}">
+
+    <title>{% include 'base/site_name.html' %} - {% block title %}{% endblock %} | Index</title>
+
+    <link rel="stylesheet" href="{% static 'static/auth/vendors/iconfonts/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'static/auth/vendors/iconfonts/ionicons/dist/css/ionicons.css' %}">
+
+    <link rel="stylesheet" href="{% static 'static/auth/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css' %}">
+
+    <link rel='stylesheet' href="{% static 'static/auth/vendors/css/vendor.bundle.base.css' %}">
+    <link rel="stylesheet" href="{% static 'static/auth/vendors/css/vendor.bundle.addons.css' %}">
+
+    <link rel="stylesheet" href="{% static 'static/auth/css/shared/style.css' %}">
+    <link rel="stylesheet" href="{% static 'static/auth/css/demo_1/style.css' %}">
+
+
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="{% static 'static/favicon_io/favicon.ico' %}" type="image/x-icon">
+    
+
+    <!-- Specific CSS goes HERE -->
+    {% block stylesheets %}{% endblock stylesheets %}
+
+  </head>
+  <body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+
+          {% block content %}
+          {% endblock content %}
+
+        </div>
+    </div>
+    <!-- container-scroller -->
+
+
+    {% comment %}
+    {% endcomment %}
+
+    {% include 'base/includes/auth_scripts.html' %}
+    
+    <!-- Specific JS goes HERE -->
+    {% block javascripts %}{% endblock javascripts %}
+
+  </body>
+
+</html>

@@ -1,0 +1,86 @@
+<!--Top of the dash -->
+
+{% load static %}
+
+<!-- Chart . js -->
+<script src="{% static 'chart/dist/Chart.min.js' %}"></script>
+
+
+<div class="row col-12">
+    <div class="row mt-5">
+        <div class="col-3 ml-1 mb-4">
+            <div class="card border-light shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="text text-left">
+                            <h6 class="mb-0">Total Posts</h6>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between border-light">
+                        <div class="text text-center text-muted">
+                            <h1 class="text-xxl-center">{{ total }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 ml-1 mb-4">
+            <div class="card border-light shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="text text-left">
+                            <h6 class="mb-0">Solved queries</h6>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between border-light">
+                        <div>
+                            <div class="text text-center text-muted">
+                                <h1 class="text-xxl-center">{{ solved }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3 ml-1 mb-4">
+            <div class="card border-light shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="text text-left">
+                            <h6 class="mb-0">Active</h6>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between border-light">
+                        <div>
+                            <div class="text text-center text-muted">
+                                <h1 class="text-xxl-center">{{ inprogress }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-3 ml-1 mb-4">
+            <div class="card border-light shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="text text-left">
+                            <h6 class="mb-0">Pending</h6>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between border-light">
+                        <div>
+                            <div class="text text-center text-muted">
+                                <h1 class="text-xxl-center">{{ pending }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

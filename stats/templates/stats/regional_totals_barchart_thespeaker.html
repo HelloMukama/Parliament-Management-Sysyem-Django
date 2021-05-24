@@ -1,0 +1,32 @@
+
+<div id="fig00" class="container-fluid"></div>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+        var chart = Highcharts.chart('fig00', {
+            chart: {
+                type: 'column'
+            }, 
+            title: {
+                text: 'Submission Categories vs the number of all MP submissions made in each of them.'
+            }, 
+            xAxis: {
+                categories: {{categories_thespeaker|safe}}
+
+            }, 
+            yAxis: {
+                title: {
+                    text: 'Total submissions'
+                }
+            },
+            series: [{
+                name: 'Categories',
+                data: {{values_thespeaker|safe}}
+            }]
+        });
+    });
+
+
+</script>
+

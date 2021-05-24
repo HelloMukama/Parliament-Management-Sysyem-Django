@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-12 p-1">
+        <div class="card border-light shadow-sm">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h5 class="text">
+                            A general tabulation of the submissions Vs Regions all around the country
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                    <table class="table table-centered mb-0 rounded table-bordered table-hover table-sm">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col" style="padding: 5px">Northern</th>
+                            <th scope="col" style="padding: 5px">Eastern</th>
+                            <th scope="col" style="padding: 5px">Central</th>
+                            <th scope="col" style="padding: 5px">Southern</th>
+                            <th scope="col" style="padding: 5px">Western</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{% if north_total > 0 %}
+                                {{ north_total }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if east_total > 0 %}
+                                {{ east_total }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if central_total > 0 %}
+                                {{ central_total }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if south_total > 0 %}
+                                {{ south_total }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if west_total > 0 %}
+                                {{ west_total }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan="8">THE TOTAL SUBMISSIONS FROM ALL REGIONS ARE: {% if not total_subs_as_per_regions > 0 %}0{% else %}{{ total_subs_as_per_regions }}{% endif %}</td>
+                            
+                        </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+
+                    {%comment%}
+                <div class="row">
+                    <div class="col-md-4 offset-2 mt-2">
+                        <a href="{% url 'stats:create_pdf_report_main_table' %}">View / Download table as pdf</a>
+                    </div>
+                    <div class="col-md-4 offset-1 mt-2">
+                        <h7>Cant see pdf?</h7>
+                        <a href="{% url 'stats:download_pdf_report_main_table' %}">Download instead</a>
+                    </div>
+                </div>
+                    {%endcomment%}
+            </div>
+        </div>
+    </div>

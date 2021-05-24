@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- Primary Meta Tags -->
+
+    <title>
+        {% include 'base/site_name.html' %} - {% block title %}{% endblock %}
+    </title>
+
+    <!-- Favicon -->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Fontawesome -->
+    <link type="text/css" href="{% static 'static/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+
+    <!-- Sweet Alert -->
+    <link type="text/css" href="{% static 'static/assets/vendor/sweetalert2/dist/sweetalert2.min.css' %}" rel="stylesheet">
+
+    <!-- Notyf -->
+    <link type="text/css" href="{% static 'static/assets/vendor/notyf/notyf.min.css' %}" rel="stylesheet">
+
+    <!-- Volt CSS -->
+    <link type="text/css" href="{% static 'static/assets/css/volt.css' %}" rel="stylesheet">
+
+    <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
+
+</head>
+<body>
+
+<header class="header-global">
+    <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary pt-4 navbar-dark">
+        <div class="container position-relative">
+            <div class="navbar-collapse collapse me-auto" id="navbar_global">
+
+                <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                    <li class="nav-item me-2">
+                        <a href="" class="nav-link">
+                            {% include 'base/site_name.html' %}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<main>
+    <section class="section section-lg bg-white">
+        <div class="container">
+            <div class="">
+
+                <!-- content here -->
+                {% block non_index_container %}
+                {% endblock %}
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+
+{%comment%}
+
+{% include 'base/includes/footer.html' %}
+
+{% include 'base/includes/scripts.html' %}
+{%endcomment%}
+
+
+{% include 'base/includes/live_scripts.html' %}
+
+</body>
+
+</html>

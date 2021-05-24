@@ -1,0 +1,85 @@
+<!-- PDF on the submission details -->
+
+{% load static i18n %}
+{% load static %}
+
+<header class="clearfix">
+    {#<p>Property of The Parliament of Uganda</p>#}
+
+    <div style="justify-content: center; align-items: center;">
+        <img id="coaUG" src="{% static '/static/assets/img/bg/coa-ug.png' %}" alt="">
+        <h2 id="coaUGhead">PARLIAMENT OF UGANDA</h2>
+        <!-- <p>Dated_____________________________________: {{today.now}}</p> -->
+        <p>Saturday 22nd, May 2021</p>{{today.now}}
+    </div>
+
+</header>
+
+<body><br><br><br><br><br><br><br><br><br><br>
+    <div>
+        <div class="col-12 col-xl-12" style="">
+
+            <div>
+                <p style="color: #0c83e2;">
+                    This document shows the details of a submission made by one of the Mps of the
+                    {% include 'base/parliament_num.html' %} Parliament of the Republic of Uganda.</p>
+            </div>
+
+            <div class="">
+                <h4>SUBMISSON: <span style="text-decoration: underline;">{{ submission.submission }}</span></h4>
+            </div>
+
+            <div>
+                <p>Submitted by: 
+                    <span class="text-primary">
+                        <b>Hon. {{ submission.profile.user.first_name }}
+                        {%if submission.profile.user.middle_name%} {{ submission.profile.user.middle_name }} {%else%} {%endif%}
+                        {{ submission.profile.user.last_name }}</b>
+                    </span>
+                <p>Constituency:
+                    <b>{{ submission.profile.district }}, {{ submission.profile.my_constituency }}</b>
+                </p>
+
+            </div>
+
+            <div class="mt-2">
+                <h4 style="text-decoration: underline;"><b>Details of this submission</b></h4>
+                <p style="">{{ submission.description|linebreaksbr }}</p>
+
+                <span style="font-size: small;">
+                    <p style="font-size: smaller">
+                        <em>
+                        Submitted on <span style="font-size: small;" class="text-muted">{{ submission.timestamp }}</span>
+                        </em>
+                        <em>
+                        | Last Edited on <span style="font-size: small;" class="text-muted">{{ submission.updated }}</span>
+                        </em>
+                    </p>
+                 </span>
+            </div>
+
+            <div class="mt-2">
+                <p style="border: 15px;"> {% if submission.submission_status == 'solved' %}
+                    <span style="color: black; background-color: seagreen; padding: 5px;">This issue was solved/closed</span>
+                    {% elif submission.submission_status == 'pending' %}
+                    <span style="color: black; background-color: red; padding: 5px;">Yet to be reviewed by the Speaker</span>
+                    {% elif submission.submission_status == 'inprogress' %}
+                    <span style="color: black; background-color: yellow; padding: 5px;">This issue is actively being attended to.</span>
+                    {% endif %}
+                </p>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<!-- Content for Static Frame 'footer_frame' -->
+<footer>
+    <p>______________________________________________________________________________________________</p>
+    <p style="justify-content: right; align-items: right;">1/1</p>
+<!--    <p style="justify-content: right">page <pdf:pagenumber> of <pdf:pagecount></p>-->
+    <p style="color: #0c83e2; font-size: x-small;">
+        This document is property of the Parliament of the Republic of Uganda.
+        If found please return to office of the Speaker. If unreachable, please leave the document at Parliament Security.
+    </p>
+</footer>

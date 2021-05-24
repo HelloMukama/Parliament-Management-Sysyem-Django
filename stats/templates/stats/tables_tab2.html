@@ -1,0 +1,100 @@
+<div class="row">
+    <div class="col-12 p-1">
+        <div class="card border-light shadow-sm">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h5 class="text">
+                            A general tabulation of the Submissions Vs Categories all around the country
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                    <table class="table table-centered mb-0 rounded table-bordered table-hover table-sm">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col" style="padding: 5px">Agriculture</th>
+                            <th scope="col" style="padding: 5px">Education</th>
+                            <th scope="col" style="padding: 5px">Health</th>
+                            <th scope="col" style="padding: 5px">Industry</th>
+                            <th scope="col" style="padding: 5px">Security</th>
+                            <th scope="col" style="padding: 5px">Technology</th>
+                            <th scope="col" style="padding: 5px">Tourism</th>
+                            <th scope="col" style="padding: 5px">Others</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{% if agric_total > 0 %}
+                                {{ agric_total }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if educ_total > 0 %}
+                                {{ educ_total }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if health_total > 0 %}
+                                {{ health_total }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if ind_total > 0 %}
+                                {{ ind_total }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if sec_total > 0 %}
+                                {{ sec_total }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if tech_total > 0 %}
+                                {{ tech_total }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if tour_total > 0 %}
+                                {{ tour_total }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if others_total > 0 %}
+                                {{ others_total }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="8">THE TOTAL SUBMISSIONS FROM ALL CATEGORIES ARE: {% if not total_subs_as_per_cats > 0 %}0{% else %}{{ total_subs_as_per_cats }}{% endif %}</td>
+                            
+                        </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+                    {%comment%}
+
+                <div class="row">
+                    <div class="col-md-4 offset-2 mt-2">
+                        <a href="{% url 'stats:create_pdf_report_main_table' %}">View / Download table as pdf</a>
+                    </div>
+                    <div class="col-md-4 offset-1 mt-2">
+                        <h7>Cant see pdf?</h7>
+                        <a href="{% url 'stats:download_pdf_report_main_table' %}">Download instead</a>
+                    </div>
+                </div>
+                    {%endcomment%}
+            </div>
+        </div>
+    </div>

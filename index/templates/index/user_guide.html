@@ -1,0 +1,337 @@
+
+{% extends "base/layouts/base.html" %}
+
+{% block title %} Help? {% endblock %}
+{% load static %}
+{% load comment_tags %}  {# Loading the template tag #}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+{% if request.user.profile.is_mp %}
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-content col-md-8">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Help instructions</h5>
+                            </div>
+                            <p>
+                                Problems navigating around the system?
+                                <br>
+                                Read through some of the hints below to guide you on where you could be facing issues 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+
+            <!-- [ Main Content ] start -->
+            <div class="row">
+                <!-- [ sample-page ] start -->
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                <h5>Dashboard Description</h5>
+                                The Dashboard is a collection of graphs and charts representing data from all of your submissions.
+                                These charts each have an option of saving or printing a copy in that you could attach this copy to say a report you're drafting.
+
+                                Easy right!
+                                Another thing is that each of these charts updates with fresh data at page reload with all of your recently entered data.
+
+                                <br><br>These charts are clealy annotated showing you exactly what you need to know at first glance!
+                                Figures of say the region or category with the most or least number of submissions.
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- [ sample-page ] end -->
+            </div> <!-- [ Main Content ] end -->
+
+
+
+            <!-- [ Main Content ] start -->
+            <div class="row">
+                <!-- [ sample-page ] start -->
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                <h5>Submissions: ALL, UNRESOLVED & RESOLVED</h5>
+                                These pages each contain a tabled list of your submissions in a very easy to understand manner.
+                                Column 1 shows Submission IDs with background colors of red, yellow and green.
+                                Green is for solved
+                                Yellow is for active / For the submissions that are actively being worked upon
+                                Red is for pending: This means that you either just submitted this or did the submission some time back but it's yet to be brought to the floor of the parliament.
+                                
+                                <br><br>All Submissions page:
+                                This shows all the submissions you've made via the system as depicted by red, yellow and green colors
+
+                                <br><br>Unresolved Submissions page:
+                                This shows all the unresolved submissions.
+
+                                <br><br>Resolved Submissions page:
+                                This shows all the resolved submissions.
+
+                                You can sort, search and perform amazing actions on the tables holding these submissions
+
+
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- [ sample-page ] end -->
+
+
+                <!-- [ sample-page ] start -->
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                <h5>Add new</h5>
+                                This page is where you can make a new submission.
+
+                                After making a new submission, you'll be redirected to the all submissions table in that you can view that submission you just made.
+
+                                <br><br><h6>Viewing a submission</h6>
+                                When you click on any submission inside of the tables, you'll be taken to the details of that particular submission.
+                                Here, you'll be able to edit, leave a comment and edit your comments.
+
+                                <br><br>NB: It's only the Speaker that will be able to view these as the submissions you make are really to the speaker's office.
+                                <br><h7>What does this mean?</h7>
+                                This then means that it's the speaker that can see your submission, and also leave a comment.
+
+                                When the speaker adds a comment, you'll get an email notification of this comment and from here, you'll be able to log onto your account and react to this comment.
+                                <br>
+                                Feel free to checkout more that can be done with the comments.
+                                Since forexample, in case a comment is inappropriate, you can report it to the administrators
+                            
+                                <br><br><h6>The Statistics page</h6>
+                                This page shows tables and charts.
+                                <br><br><h7>Tables</h7>For the tables, these show totals from different arrangements.
+                                Each thing is a clear as can be and therefore, it saves your time when you're viewing these tables.
+
+                                <br><br><h7>Charts</h7> These charts' description is the same as that offered for the dashboard charts.
+
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- [ sample-page ] end -->
+
+
+                <!-- [ sample-page ] start -->
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                <h5>Accounts and Profiles</h5>
+
+                                <br><h6>My profile</h6>
+                                You can view your profile details and also edit these details.
+
+                                
+                                <br><br><h6>Settings</h6>
+                                Settings is a page where you can perform system changes like changing of the password of your sysem.
+
+                                <br><br><br><h6>Feedback?</h6>
+                                Nice! Submit feedback <span id="blueLink1"><a href="#">here</a></span>.
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- [ sample-page ] end -->
+
+
+
+            </div> <!-- [ Main Content ] end -->
+
+
+
+        </div>
+    </div>
+    <!-- [ Main Content ] end -->
+{%endif%}
+
+
+
+
+
+
+{% if request.user.profile.is_thespeaker %}
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-content col-md-8">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Help instructions</h5>
+                            </div>
+                            <p>
+                                Problems navigating around the system?
+                                <br>
+                                Read through some of the hints below to guide you on where you could be facing issues 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+
+            <!-- [ Main Content ] start -->
+            <div class="row">
+                <!-- [ sample-page ] start -->
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                <h5>Dashboard Description</h5>
+                                The Dashboard is a collection of graphs and charts representing data from all MP submissions.
+                                These charts each have an option of saving or printing a copy in that you could attach this copy to say a report you're drafting.
+
+                                Easy right!
+                                Another thing is that each of these charts updates with fresh data at page reload with all of MP recently submitted data.
+
+                                <br><br>These charts are clealy annotated showing you exactly what you need to know at first glance!
+                                Figures of say the region or category with the most or least number of submissions.
+
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- [ sample-page ] end -->
+            </div> <!-- [ Main Content ] end -->
+
+
+
+            <!-- [ Main Content ] start -->
+            <div class="row">
+                <!-- [ sample-page ] start -->
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                <h5>Submissions: ALL, UNRESOLVED & RESOLVED</h5>
+                                These pages each contain a tabled list of all MP submissions in a very easy to understand manner.
+                                
+                                <br><br>Column 1 shows Submission IDs with background colors of red, yellow and green.
+                                Green is for solved
+                                Yellow is for active / For the submissions that are actively being worked upon
+                                Red is for pending: 
+                                <br>This means that the MP either just submitted this or did the submission some time back but it's yet to be brought to the floor of the parliament.
+                                
+                                <br><br><h7>All Submissions page:</h7>
+                                This shows all the submissions the MPs have made via the system as depicted by red, yellow and green colors
+
+                                <br><br><h7>Unresolved Submissions page:</h7>
+                                This shows all the unresolved submissions.
+
+                                <br><br><h7>Resolved Submissions page:</h7>
+                                This shows all the resolved submissions.
+
+
+                                <br><br><h6>Sorting/Searching/Printing tables:</h6>
+                                You can sort, search and perform amazing actions on the tables holding these submissions.
+                                You'll also be able to print copies of any table via a printer. A4 sized papers.
+
+
+
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- [ sample-page ] end -->
+
+
+                <!-- [ sample-page ] start -->
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                <h5>Viewing a submission</h5>
+                                When you click on any submission inside of the tables, you'll be taken to the details of that particular submission.
+                                Here, you'll be able to leave a comment and edit your comments.
+
+                                <br><br>NB: Only 2 people are able to view a submission. The MP that made the submission in question and you the speaker! As the submissions the MPs make are directed specifically to your office.
+
+                                <br><h7>What does this mean?</h7>
+                                This then means that it's the MP that can see their submission, and also leave a comment plus you yourself.
+
+                                When you add a comment, the MP will get an email notification of this comment and from here, this MP will be able to log onto their account and react to your comment.
+                                <br><br>Feel free to checkout more that can be done with the comments.
+                                Since forexample, in case a comment is inappropriate, you can report it to the administrators
+                            
+                                <br><br><h6>Downloading a report</h6>
+                                To download a report of a particular submission, simply click download and from here, you'll be able to print that particular submission onto an A4 sized paper via an ordinary printer.
+
+
+                                <br><br><h6>The Statistics page</h6>
+                                This page shows tables and charts.
+                                <br><br><h7>Tables</h7>For the tables, these show totals from different arrangements.
+                                Each thing is a clear as can be and therefore, it saves your time when you're viewing these tables.
+
+                                <br><br><h7>Charts</h7> These charts' description is the same as that offered for the dashboard charts.
+
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- [ sample-page ] end -->
+
+
+                <!-- [ sample-page ] start -->
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                <h5>Accounts and Profiles</h5>
+
+                                <br><h6>My profile</h6>
+                                You can view your profile details and also edit these details.
+
+                                
+                                <br><br><h6>Settings</h6>
+                                Settings is a page where you can perform system changes like changing of the password of your sysem.
+
+                                <br><br><br><h6>Feedback?</h6>
+                                Nice! Submit feedback <span id="blueLink1"><a href="#">here</a></span>.
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- [ sample-page ] end -->
+
+
+
+            </div> <!-- [ Main Content ] end -->
+
+
+
+        </div>
+    </div>
+    <!-- [ Main Content ] end -->
+{%endif%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

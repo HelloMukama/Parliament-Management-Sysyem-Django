@@ -1,0 +1,31 @@
+{% extends "base/layouts/base.html" %}
+
+{% block title %} Submission | Details {% endblock %}
+{% load static %}
+{% load comment_tags %}  {# Loading the template tag #}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row mt-2 pl-lg-4" style="height: 75%;">
+    <div class="col-8 col-xl-8 ml-3">
+        <div class="card card-body shadow-sm mb-4">
+            
+            <h3 style="">Help instructions.</h4>
+            <p>
+                <h5>About</h5>
+                Every dashboard should have a summary or short description of what the dashboard is intended to show and who the intended audience is. Does the dashboard show a historical monthly view of KPIs intended for organizational management review, or does it contain more detailed data of activity meant for regular use by an operational team in the sales department?
+
+                It may also be helpful to provide possible use cases and examples of insights users can get out of the dashboard. For example, a dashboard can be primarily meant for monitoring at the weekly company all-hands meeting, with charts indicating how close or far teams are to meeting their monthly objectives.
+            </p>
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock %}

@@ -1,0 +1,75 @@
+<div id="container2pie"></div>
+
+<script>
+    Highcharts.chart('container2pie', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Categories VS the number of all MP submissions.'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.y:.0f}</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.y:.0f}'
+            }
+        }
+    },
+
+        series: [{
+            name: 'Category',
+            colorByPoint: true,
+            data: [{
+                name: 'Agriculture',
+                y: {{thespeaker_agric_total|safe}},
+            }, {
+                name: 'Education',
+                y: {{thespeaker_educ_total|safe}}
+            }, {
+                name: 'Health',
+                y: {{thespeaker_health_total|safe}}
+            }, {
+                name: 'Industry',
+                y: {{thespeaker_ind_total|safe}}
+            }, {
+                name: 'Security',
+                y: {{thespeaker_sec_total|safe}}
+            }, {
+                name: 'Technology',
+                y: {{thespeaker_tech_total|safe}}
+            }, {
+                name: 'Tourism',
+                y: {{thespeaker_tour_total|safe}}
+            }, {
+                name: 'Others',
+                y: {{thespeaker_others_total|safe}}
+            }]
+        }]
+    });
+
+
+</script>
+
+
+
+<!-- HighCharts libraries -->
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://code.highcharts.com/modules/offline-exporting.js"></script>
+<script src="http://code.highcharts.com/modules/export-data.js"></script>
+<script src="http://code.highcharts.com/modules/series-label.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>
